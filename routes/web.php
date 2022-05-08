@@ -87,4 +87,16 @@ Route::group(['prefix'=>'/admin'],function(){
 
     });
 
+    // ALL Course Coupon  
+    Route::group(['prefix'=>'/coupon'],function(){
+
+        Route::get('/manage','App\Http\Controllers\Backend\CouponController@index')->name('coupon.manage');
+        Route::get('/create','App\Http\Controllers\Backend\CouponController@create')->name('coupon.create');
+        Route::post('/store','App\Http\Controllers\Backend\CouponController@store')->name('coupon.store');
+        Route::get('/edit/{id}','App\Http\Controllers\Backend\CouponController@edit')->name('coupon.edit');
+        Route::post('/update/{id}','App\Http\Controllers\Backend\CouponController@update')->name('coupon.update');
+        Route::post('/delete/{id}','App\Http\Controllers\Backend\CouponController@destroy')->name('coupon.delete');
+
+    });
+
 });

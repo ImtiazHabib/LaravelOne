@@ -1,0 +1,24 @@
+.custom-padding{
+	padding:21px;
+}
+
+.edit_trash_button{
+	display: -webkit-inline-box;
+}
+.edit_trash_button li{
+	list-style: none;
+}
+.edit_trash_button .fa-edit{
+	color: green;
+}
+.edit_trash_button .fa-edit:hover{
+	color: yellow;
+}
+.edit_trash_button .fa-trash{
+	color: red;
+}
+.edit_trash_button .fa-trash:hover{
+	color: black;
+}
+
+

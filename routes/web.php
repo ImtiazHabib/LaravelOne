@@ -63,6 +63,18 @@ Route::group(['prefix'=>'/admin'],function(){
 
     });
 
+    // ALL  Batch routes  
+    Route::group(['prefix'=>'/batch'],function(){
+
+        Route::get('/manage','App\Http\Controllers\Backend\BatchController@index')->name('batch.manage');
+        Route::get('/create','App\Http\Controllers\Backend\BatchController@create')->name('batch.create');
+        Route::post('/store','App\Http\Controllers\Backend\BatchController@store')->name('batch.store');
+        Route::get('/edit/{id}','App\Http\Controllers\Backend\BatchController@edit')->name('batch.edit');
+        Route::post('/update/{id}','App\Http\Controllers\Backend\BatchController@update')->name('batch.update');
+        Route::post('/delete/{id}','App\Http\Controllers\Backend\BatchController@destroy')->name('batch.delete');
+
+    });
+
     // ALL Course 
     Route::group(['prefix'=>'/courses'],function(){
 

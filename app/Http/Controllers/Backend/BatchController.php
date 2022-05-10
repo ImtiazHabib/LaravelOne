@@ -9,9 +9,6 @@ use App\Models\Backend\Branch;
 use App\Models\Backend\Course;
 use App\Models\Backend\Mentor;
 use Illuminate\Support\Str;
-use File;
-use Image;
-
 
 class BatchController extends Controller
 {
@@ -22,7 +19,8 @@ class BatchController extends Controller
      */
     public function index()
     {
-         $batches = Batch::orderby('batch_name','asc')->get(); 
+         $batches = Batch::orderby('batch_name','asc')->get();
+
         return view('backend.pages.batches.manage',compact('batches'));
     }
 
@@ -49,7 +47,26 @@ class BatchController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $batch = new Batch();
+
+        $batch->batch_name           = $request->batch_name;
+        $batch->batch_starting_date  = $request->batch_starting_date;
+        $batch->batch_slug           = str::slug($request->batch_name);
+        $batch->batch_class_day      = $request->batch_class_day;
+        $batch->batch_class_timing   = $request->batch_class_timing;
+        $batch->batch_fb_group       = $request->batch_fb_group;
+        $batch->batch_sit_number      = $request->batch_sit_number;
+        $batch->batch_branch_id       = $request->batch_branch_id;
+        $batch->batch_course_id       = $request->batch_course_id;
+        $batch->batch_mentor_id        = $request->batch_mentor_id;
+        $batch->batch_type             = $request->batch_type;
+        $batch->batch_admission_status = $request->batch_admission_status;
+        $batch->batch_status            = $request->batch_status;
+
+         $batch->save();
+
+        return redirect()->route('batch.manage');
+
     }
 
     /**
@@ -71,7 +88,19 @@ class BatchController extends Controller
      */
     public function edit($id)
     {
-        //
+        $batch = Batch::find($id);
+
+        if( !empty($batch))
+        {  
+             $branches = Branch::orderby('name','asc')->get(); 
+             $courses = Course::orderby('course_english_title','asc')->get(); 
+             $mentors = Mentor::orderby('mentor_fullname','asc')->get(); 
+           return view('backend.pages.batches.edit', compact('batch','branches','courses','mentors'));
+        }
+        else
+        {
+          return redirect()->route('batch.manage');
+        }
     }
 
     /**
@@ -83,7 +112,27 @@ class BatchController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $batch = Batch::find($id);
+
+        $batch->batch_name           = $request->batch_name;
+        $batch->batch_starting_date  = $request->batch_starting_date;
+        $batch->batch_slug           = str::slug($request->batch_name);
+        $batch->batch_class_day      = $request->batch_class_day;
+        $batch->batch_class_timing   = $request->batch_class_timing;
+        $batch->batch_fb_group       = $request->batch_fb_group;
+        $batch->batch_sit_number      = $request->batch_sit_number;
+        $batch->batch_branch_id       = $request->batch_branch_id;
+        $batch->batch_course_id       = $request->batch_course_id;
+        $batch->batch_mentor_id        = $request->batch_mentor_id;
+        $batch->batch_type             = $request->batch_type;
+        $batch->batch_admission_status = $request->batch_admission_status;
+        $batch->batch_status            = $request->batch_status;
+
+         $batch->save();
+
+        return redirect()->route('batch.manage');
+        
+
     }
 
     /**
@@ -94,6 +143,9 @@ class BatchController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $batch = Batch::find($id);
+        $batch->delete();
+
+        return redirect()->route('batch.manage');
     }
 }

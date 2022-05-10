@@ -29,6 +29,7 @@ class Batch extends Model
       return $this->belongsTo(Course::class);
     }
 
+
     public function mentor(){
       return $this->belongsTo(Mentor::class);
     }

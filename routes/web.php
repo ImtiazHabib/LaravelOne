@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/','App\Http\Controllers\Frontend\PageController@index')->name('homepage');
+Route::get('/coursepage','App\Http\Controllers\Frontend\PageController@coursepage')->name('coursepage');
 
 
 
@@ -27,9 +29,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/blank', function () {
     return view('backend.template.blank');

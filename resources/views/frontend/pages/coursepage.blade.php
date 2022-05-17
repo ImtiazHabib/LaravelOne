@@ -31,7 +31,7 @@
                         <div class="col-md-6">
                             <nav aria-label="breadcrumb">
                               <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('homepage') }}">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Our Courses</li>
                               </ol>
                             </nav>
@@ -44,10 +44,10 @@
                                 <a class="nav-link active" id="allCourses-tab" data-toggle="tab" href="#allCourses" role="tab" aria-controls="allCourses" aria-selected="true">All Courses</a>
                               </li>
                               <li class="nav-item">
-                                <a class="nav-link" id="banani-tab" data-toggle="tab" href="#banani" role="tab" aria-controls="banani" aria-selected="false">Banani Courses</a>
+                                <a class="nav-link" id="banani-tab" data-toggle="tab" href="#banani" role="tab" aria-controls="banani" aria-selected="false">Jatrabary Courses</a>
                               </li>
                               <li class="nav-item">
-                                <a class="nav-link" id="mirpur-tab" data-toggle="tab" href="#mirpur" role="tab" aria-controls="mirpur" aria-selected="false">Mirpur Courses</a>
+                                <a class="nav-link" id="mirpur-tab" data-toggle="tab" href="#mirpur" role="tab" aria-controls="mirpur" aria-selected="false">Mothijhel Courses</a>
                               </li>
                             </ul>
                         </div>
@@ -99,18 +99,28 @@
                                     </div>
                                     <!-- All Courses End -->
 
-                                    <!-- Banani Courses Start -->
-                                    <h2 class="sec-title">Banani Branch Offered Courses</h2>
-                                    <!-- Banani Courses End -->
+                                    <!-- Jatrabary Courses Start -->
+                                    <h2 class="sec-title">Jatrabary Branch Offered Courses</h2>
+                                    <!-- Jatrabary Courses End -->
                                     <div class="row">
+                                        @foreach($batches as $batch)
+                                         @if($batch->batch_branch_id == 3)
                                         <!-- Course Start -->
                                         <div class="col-md-4">
                                             <!-- Course List Start -->
                                             <div class="course-item">
                                                 <div class="course-item-img">
+
+                                                    @if($batch->batch_type == 1)
+                                                    <div class="coutse-type-online">Online</div>
+                                                    @elseif($batch->batch_type == 2)
                                                     <div class="coutse-type-offline">Offline</div>
+                                                    @endif
+
                                                     <a href="">
-                                                        <img src="{{ asset('frontend/assets/images/webdev.png') }}" alt="">
+                                                        
+                                                        <img src="{{ asset('backend/img/courses/'. $batch->course->course_image ) }}" alt="">
+                                                        
                                                     </a>
                                                     <a href="" class="course-link">+</a>                              
                                                 </div>
@@ -118,15 +128,16 @@
                                                 <div class="course-summary box">
                                                     
                                                     <div class="course-summary-inner">
-                                                        <h4>ফুল স্ট্যাক ওয়েব ডেভেলপমেন্ট</h4>
+                                                        <h4>{{ $batch->course->course_english_title ?? 'None'}}</h4>
                                                         <ul class="course-meta">
                                                             <li>
                                                                 <span>Mentor: </span> 
-                                                                <span class="green-highlight">Faisal Hamid Hemel</span>
+                                                                <span class="green-highlight">{{ $batch->mentor->mentor_fullname ?? 'None' }}</span>
                                                             </li>
                                                             <li>
-                                                                <span>Classes: </span> 
-                                                                <span class="blue-highlight">24</span>
+                                                                <span>Branch: </span> 
+                                                                <span class="blue-highlight">{{ $batch->branch->name ?? 'no branch' }}</span>
+                                                                <br>
                                                                 <span>Hours: </span> 
                                                                 <span class="blue-highlight">96</span>
                                                             </li>                                     
@@ -144,48 +155,8 @@
                                             <!-- Course List End -->
                                         </div>
                                         <!-- Course End -->
-
-                                        <!-- Course Start -->
-                                        <div class="col-md-4">
-                                            <!-- Course List Start -->
-                                            <div class="course-item">
-                                                <div class="course-item-img">
-                                                    <div class="coutse-type-online">Offline</div>
-                                                    <a href="">
-                                                        <img src="{{ asset('frontend/assets/images/webdev.png') }}" alt="">
-                                                    </a>
-                                                    <a href="" class="course-link">+</a>         
-                                                </div>
-
-                                                <div class="course-summary box">
-                                                    
-                                                    <div class="course-summary-inner">
-                                                        <h4>ফুল স্ট্যাক ওয়েব ডেভেলপমেন্ট</h4>
-                                                        <ul class="course-meta">
-                                                            <li>
-                                                                <span>Mentor: </span> 
-                                                                <span class="green-highlight">Faisal Hamid Hemel</span>
-                                                            </li>
-                                                            <li>
-                                                                <span>Classes: </span> 
-                                                                <span class="blue-highlight">24</span>
-                                                                <span>Hours: </span> 
-                                                                <span class="blue-highlight">96</span>
-                                                            </li>                                     
-                                                            <li>
-                                                                <span>Seats Left: </span> 
-                                                                <span class="blue-highlight">50</span>
-                                                            </li>
-                                                        </ul>
-
-                                                        <a href="" class="btn btn-entroll">Enroll Now</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <!-- Course List End -->
-                                        </div>
-                                        <!-- Course End -->
+                                         @endif
+                                        @endforeach
                                     </div>
                                     <!-- Row End -->
 

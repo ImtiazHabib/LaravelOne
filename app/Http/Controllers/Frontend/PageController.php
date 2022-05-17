@@ -4,6 +4,12 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Backend\Batch;
+use App\Models\Backend\Branch;
+use App\Models\Backend\Course;
+use App\Models\Backend\Mentor;
+use File;
+use Image;
 
 class PageController extends Controller
 {
@@ -23,8 +29,9 @@ class PageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function coursepage()
-    {
-        return view('frontend.pages.coursepage');
+    { 
+        $batches = Batch::orderby('id','asc')->get();
+        return view('frontend.pages.coursepage',compact('batches'));
         
     }
 

@@ -26,15 +26,17 @@ class Batch extends Model
     ];
 
     public function course(){
-      return $this->belongsTo(Course::class);
+      return $this->belongsTo(Course::class,'batch_course_id');
     }
 
 
     public function mentor(){
-      return $this->belongsTo(Mentor::class);
+      return $this->belongsTo(Mentor::class,'batch_mentor_id');
     }
 
     public function branch(){
-      return $this->belongsTo(Branch::class);
+      return $this->belongsTo(Branch::class,'batch_branch_id');
     }
+
+     
 }

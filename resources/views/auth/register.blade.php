@@ -9,54 +9,48 @@
         <div class="signin-logo tx-center tx-28 tx-bold tx-inverse"><span class="tx-normal">[</span> Imtiaz <span class="tx-info">Habib</span> <span class="tx-normal">]</span></div>
         <div class="tx-center mg-b-40">Welcome to My Laravel v8 Project</div>
 
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Enter your username">
-        </div><!-- form-group -->
-        <div class="form-group">
-          <input type="password" class="form-control" placeholder="Enter your password">
-        </div><!-- form-group -->
-        <div class="form-group">
-          <input type="password" class="form-control" placeholder="Enter your fullname">
-        </div><!-- form-group -->
-        <div class="form-group">
-          <label class="d-block tx-11 tx-uppercase tx-medium tx-spacing-1">Birthday</label>
-          <div class="row row-xs">
-            <div class="col-sm-4">
-              <select class="form-control select2" data-placeholder="Month">
-                <option label="Month"></option>
-                <option value="1">January</option>
-                <option value="2">February</option>
-                <option value="3">March</option>
-                <option value="4">April</option>
-                <option value="5">May</option>
-              </select>
-            </div><!-- col-4 -->
-            <div class="col-sm-4 mg-t-20 mg-sm-t-0">
-              <select class="form-control select2" data-placeholder="Day">
-                <option label="Day"></option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
-            </div><!-- col-4 -->
-            <div class="col-sm-4 mg-t-20 mg-sm-t-0">
-              <select class="form-control select2" data-placeholder="Year">
-                <option label="Year"></option>
-                <option value="1">2010</option>
-                <option value="2">2011</option>
-                <option value="3">2012</option>
-                <option value="4">2013</option>
-                <option value="5">2014</option>
-              </select>
-            </div><!-- col-4 -->
-          </div><!-- row -->
-        </div><!-- form-group -->
-        <div class="form-group tx-12">By clicking the Sign Up button below, you agreed to our privacy policy and terms of use of our website.</div>
-        <button type="submit" class="btn btn-info btn-block">Sign Up</button>
 
-        <div class="mg-t-40 tx-center">Not yet a member? <a href="" class="tx-info">Sign Up</a></div>
+
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
+
+            <!-- Name -->
+            <div class="form-group">
+
+                <x-input id="name"  class="form-control"  placeholder="username" type="text" name="name" :value="old('name')" required autofocus />
+            </div>
+
+            <!-- Email Address -->
+            <div class="form-group">
+
+                <x-input id="email" class="form-control" placeholder="email" type="email" name="email" :value="old('email')" required />
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+
+                <x-input id="password" class="form-control"
+                                type="password"
+                                name="password"
+                                required autocomplete="new-password"  placeholder="password"/>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group">
+
+                <x-input id="password_confirmation" class="form-control"
+                                type="password"
+                                name="password_confirmation" placeholder="confirm password" required  />
+            </div>
+
+            <button type="submit" class="btn btn-info btn-block">Sign up</button>
+
+        </form>
+
+        <div class="mg-t-40 tx-center"  >Already a  member? <a href="{{ route('login') }}" class="tx-info">Sign In</a></div>
       </div><!-- login-wrapper -->
     </div><!-- d-flex -->
 

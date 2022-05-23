@@ -58,8 +58,8 @@
                         </div>
 
                         <div class="ml-auto ml-auto-mobile top-bar">
-                                                                                             <a href="https://shikhbeshobai.com/student/login" class="login-btn"><i cass="icofont-login"></i> Signin</a>
-                                    <a href="https://shikhbeshobai.com/student/register" class="login-btn  mobile-hide"><i class="icofont-business-man-alt-1"></i> Signup</a>
+                                 <a href="{{ route('login') }}" class="login-btn"><i cass="icofont-login"></i> Signin</a>
+                                    <a href="{{ route('register') }}" class="login-btn  mobile-hide"><i class="icofont-business-man-alt-1"></i> Signup</a>
                                                                                         
 
                         </div>

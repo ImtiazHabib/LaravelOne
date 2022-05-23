@@ -36,6 +36,18 @@ class PageController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function coursedetails()
+    { 
+        // $batches = Batch::orderby('id','asc')->get();
+        return view('frontend.pages.coursedetails');
+        
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

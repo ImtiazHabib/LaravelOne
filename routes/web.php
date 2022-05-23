@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','App\Http\Controllers\Frontend\PageController@index')->name('homepage');
 Route::get('/coursepage','App\Http\Controllers\Frontend\PageController@coursepage')->name('coursepage');
-Route::get('/coursedetails','App\Http\Controllers\Frontend\PageController@coursedetails')->name('coursedetails');
+Route::get('/coursedetails/{batch_slug}','App\Http\Controllers\Frontend\PageController@coursedetails')->name('coursedetails');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

@@ -8,6 +8,8 @@ use App\Models\Backend\Batch;
 use App\Models\Backend\Branch;
 use App\Models\Backend\Course;
 use App\Models\Backend\Mentor;
+use App\Models\Backend\CourseCurriculum;
+use Illuminate\Support\Str;
 use File;
 use Image;
 
@@ -40,10 +42,13 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function coursedetails()
+    public function coursedetails($batch_slug)
     { 
-        // $batches = Batch::orderby('id','asc')->get();
-        return view('frontend.pages.coursedetails');
+         $batch = Batch::orderby('id','asc')->where('batch_slug',$batch_slug)->first();
+         $course = Course::orderby('id','asc')->where('id',$batch->batch_course_id)->first();
+         $curriculum = CourseCurriculum::orderby('id','asc')->where('course_id',$course->id)->first();
+         
+        return view('frontend.pages.coursedetails',compact('batch','course','curriculum'));
         
     }
 

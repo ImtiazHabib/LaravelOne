@@ -117,7 +117,7 @@
                                                     <div class="coutse-type-offline">Offline</div>
                                                     @endif
 
-                                                    <a href="{{ route('coursedetails')  }}">
+                                                    <a href="{{ route('coursedetails', $batch->batch_slug)  }}">
                                                         
                                                         <img src="{{ asset('backend/img/courses/'. $batch->course->course_image ) }}" alt="">
                                                         

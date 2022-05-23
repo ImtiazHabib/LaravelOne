@@ -102,20 +102,20 @@
           <!-- Banner Left Content Start -->
           <div class="col-md-5 col-sm-12 col-12">
             <!-- Banner Heading Text -->
-            <h1><span>ফুল স্ট্যাক</span> ওয়েব ডেভেলপমেন্ট</h1>
+            <h1>{{ $batch->course->course_bangla_title }}</h1>
 
             <!-- Banner Course Short Info Text -->
             <div class="ln-course-info">
               <ul>
-                <li>কোর্সের মেয়াদ : <span>৬ মাস</span></li>
-                <li>কোর্স ফী : <span>১৫,০০০</span></li>
-                <li>ক্লাসের সময় : <span>শুক্রবার রাত ১০টা</span></li>
-                <li>ক্লাস শুরুর তারিখ : <span>শুক্রবার, ১৫ মে*</span></li>
+                <li>কোর্সের মেয়াদ : <span>{{ $batch->course->course_duration }}</span></li>
+                <li>কোর্স ফী : <span>{{ $batch->course->course_bangla_price }}</span></li>
+                <li>ক্লাসের সময় : <span>{{ $batch->batch_class_timing }}</span></li>
+                <li>ক্লাস শুরুর তারিখ : <span>{{ $batch->batch_starting_date }}</span></li>
               </ul>
             </div>
 
             <!-- Banner Paragraph Text -->
-            <p>অর্থহীন লেখা যার মাঝে আছে অনেক কিছু। হ্যাঁ, এই লেখার মাঝেই আছে অনেক কিছু। যদি তুমি মনে করো, এটা তোমার কাজে লাগবে, তাহলে তা লাগবে কাজে। নিজের ভাষায় লেখা দেখতে অভ্যস্ত হও।</p>
+            <p>{{ $batch->course->course_motivational_content }}</p>
 
             <!-- Banner Button Content -->
             <div class="ln-banner-btn">
@@ -179,10 +179,10 @@
           <!-- Right Side Tab Content Start -->
           <div class="col-md-8 offset-md-1 ln-course-details" >
             <!-- Section Title -->
-            <h2>ফুল স্ট্যাক <span class="blue-shadow">ওয়েব ডেভেলপমেন্ট </span></h2>
+            <h2 class="blue-shadow">{{ $batch->course->course_english_title }}</h2>
 
             <!-- Section paragraph -->
-            <p>অর্থহীন লেখা যার মাঝে আছে অনেক কিছু। হ্যাঁ, এই লেখার মাঝেই আছে অনেক কিছু। যদি তুমি মনে করো, এটা তোমার কাজে লাগবে, তাহলে তা লাগবে কাজে। নিজের ভাষায় লেখা দেখতে অভ্যস্ত হও। মনে রাখবে লেখা অর্থহীন হয়, যখন তুমি তাকে অর্থহীন মনে করো; আর লেখা অর্থবোধকতা তৈরি করে, যখন তুমি তাতে অর্থ ঢালো। যেকোনো লেখাই তোমার কাছে অর্থবোধকতা তৈরি করতে পারে, যদি তুমি সেখানে অর্থদ্যোতনা দেখতে পাও।ছিদ্রান্বেষণ? না, তা হবে কেন?</p>
+            <p>{{ $batch->course->course_opportunity }}</p>
 
             <div class="row">
               <!-- Course Details Video -->
@@ -200,13 +200,13 @@
               <!-- Course Details Summary -->
               <div class="col-md-4 mt-50">
                 <div class="ln-course-details-summary">
-                  <h2>২০০০+</h2>
+                  <h2>{{ $batch->course->course_graduate_number }}</h2>
                   <h4>গ্রাডুয়েটস</h4>
 
-                  <h2>৪৮ ঘন্টা</h2>
+                  <h2>{{ $batch->course->course_class_hours }}</h2>
                   <h4>ক্লাস আওয়ার্স</h4>
 
-                  <h2>২৪</h2>
+                  <h2>{{ $batch->course->course_total_lectures }}</h2>
                   <h4>লেকচার</h4>
 
                   <h2>২৪/৭</h2>
@@ -231,7 +231,7 @@
             <h2>আমাদের <span class="green-shadow"> কোর্স কারিকুলাম </span></h2>
 
             <!-- Section paragraph -->
-            <p>অর্থহীন লেখা যার মাঝে আছে অনেক কিছু। হ্যাঁ, এই লেখার মাঝেই আছে অনেক কিছু। যদি তুমি মনে করো, এটা তোমার কাজে লাগবে, তাহলে তা লাগবে কাজে। নিজের ভাষায় লেখা দেখতে অভ্যস্ত হও। মনে রাখবে লেখা অর্থহীন হয়, যখন তুমি তাকে অর্থহীন মনে করো; আর লেখা অর্থবোধকতা তৈরি করে, যখন তুমি তাতে অর্থ ঢালো। যেকোনো লেখাই তোমার কাছে অর্থবোধকতা তৈরি করতে পারে, যদি তুমি সেখানে অর্থদ্যোতনা দেখতে পাও।ছিদ্রান্বেষণ? না, তা হবে কেন?</p>
+            <p> {{ $batch->course->course_curriculum_description }}</p>
 
             <!-- Step Process Wrapper Start -->
             <div class="process-wrapper">
@@ -240,27 +240,32 @@
                 <!-- Step Heading Start -->
                 <ul>
                   <li class="step step01 active">
-                    <div class="step-inner">ইলাস্ট্রেটর</div>
+                    <div class="step-inner">{{ $curriculum->one_bn}}</div>
+                    <br>
                     <p>১ মাস</p>
                   </li>
 
                   <li class="step step02">
-                    <div class="step-inner">ফটোশপ</div>
+                    <div class="step-inner">{{ $curriculum->two_bn}}</div>
+                    <br>
                     <p>১ মাস</p>
                   </li>
 
                   <li class="step step03">
-                    <div class="step-inner">ক্লাস প্রজেক্ট</div>
+                    <div class="step-inner">{{ $curriculum->three_bn}}</div>
+                    <br>
                     <p>১ মাস</p>
                   </li>
 
                   <li class="step step04">
-                    <div class="step-inner">ফ্রীল্যান্সিং</div>
+                    <div class="step-inner">{{ $curriculum->four_bn}}</div>
+                    <br>
                     <p>১ মাস</p>
                   </li>
 
                   <li class="step step05">
-                    <div class="step-inner">লাইফলং লার্নিং</div>
+                    <div class="step-inner">{{ $curriculum->five_bn}}</div>
+                    <br>
                     <p>১ মাস</p>
                   </li>
                 </ul>
@@ -289,8 +294,8 @@
                 <div class="section-content content01 active">
                   <div class="row">
                     <div class="col-md-12 col-sm-12 col-12">
-                      <h3>ইলাস্ট্রেটর</h3>
-                      <p>অর্থহীন লেখা যার মাঝে আছে অনেক কিছু। হ্যাঁ, এই লেখার মাঝেই আছে অনেক কিছু। যদি তুমি মনে করো, এটা তোমার কাজে লাগবে, তাহলে তা লাগবে কাজে। নিজের ভাষায় লেখা দেখতে অভ্যস্ত হও। মনে রাখবে লেখা অর্থহীন হয়, যখন তুমি তাকে অর্থহীন মনে করো; আর লেখা অর্থবোধকতা তৈরি করে, যখন তুমি তাতে অর্থ ঢালো। যেকোনো লেখাই তোমার কাছে অর্থবোধকতা তৈরি করতে পারে, যদি তুমি সেখানে অর্থদ্যোতনা দেখতে পাও। …ছিদ্রান্বেষণ? না, তা হবে কেন?</p>
+                      <h3>{{ $curriculum->one_en}}</h3>
+                      <p>{{ $curriculum->one_desc}}</p>
                     </div>
                     
                   </div>
@@ -301,8 +306,8 @@
                 <div class="section-content content02">
                   <div class="row">
                     <div class="col-md-12 col-sm-12 col-12">
-                      <h3>ফটোশপ</h3>
-                      <p>অর্থহীন লেখা যার মাঝে আছে অনেক কিছু। হ্যাঁ, এই লেখার মাঝেই আছে অনেক কিছু। যদি তুমি মনে করো, এটা তোমার কাজে লাগবে, তাহলে তা লাগবে কাজে। নিজের ভাষায় লেখা দেখতে অভ্যস্ত হও। মনে রাখবে লেখা অর্থহীন হয়, যখন তুমি তাকে অর্থহীন মনে করো; আর লেখা অর্থবোধকতা তৈরি করে, যখন তুমি তাতে অর্থ ঢালো। যেকোনো লেখাই তোমার কাছে অর্থবোধকতা তৈরি করতে পারে, যদি তুমি সেখানে অর্থদ্যোতনা দেখতে পাও। …ছিদ্রান্বেষণ? না, তা হবে কেন?</p>
+                      <h3>{{ $curriculum->two_en}}</h3>
+                      <p>{{ $curriculum->two_desc}}</p>
                     </div>
                   </div>
                 </div>
@@ -311,8 +316,8 @@
                 <div class="section-content content03">
                   <div class="row">
                     <div class="col-md-12 col-sm-12 col-12">
-                      <h3>ক্লাস প্রজেক্ট</h3>
-                      <p>অর্থহীন লেখা যার মাঝে আছে অনেক কিছু। হ্যাঁ, এই লেখার মাঝেই আছে অনেক কিছু। যদি তুমি মনে করো, এটা তোমার কাজে লাগবে, তাহলে তা লাগবে কাজে। নিজের ভাষায় লেখা দেখতে অভ্যস্ত হও। মনে রাখবে লেখা অর্থহীন হয়, যখন তুমি তাকে অর্থহীন মনে করো; আর লেখা অর্থবোধকতা তৈরি করে, যখন তুমি তাতে অর্থ ঢালো। যেকোনো লেখাই তোমার কাছে অর্থবোধকতা তৈরি করতে পারে, যদি তুমি সেখানে অর্থদ্যোতনা দেখতে পাও। …ছিদ্রান্বেষণ? না, তা হবে কেন?</p>
+                      <h3>{{ $curriculum->three_en}}</h3>
+                      <p>{{ $curriculum->three_desc}}</p>
                     </div>
                   </div>
                 </div>
@@ -321,8 +326,8 @@
                 <div class="section-content content04">
                   <div class="row">
                     <div class="col-md-12 col-sm-12 col-12">
-                      <h3>ফ্রীল্যান্সিং</h3>
-                      <p>অর্থহীন লেখা যার মাঝে আছে অনেক কিছু। হ্যাঁ, এই লেখার মাঝেই আছে অনেক কিছু। যদি তুমি মনে করো, এটা তোমার কাজে লাগবে, তাহলে তা লাগবে কাজে। নিজের ভাষায় লেখা দেখতে অভ্যস্ত হও। মনে রাখবে লেখা অর্থহীন হয়, যখন তুমি তাকে অর্থহীন মনে করো; আর লেখা অর্থবোধকতা তৈরি করে, যখন তুমি তাতে অর্থ ঢালো। যেকোনো লেখাই তোমার কাছে অর্থবোধকতা তৈরি করতে পারে, যদি তুমি সেখানে অর্থদ্যোতনা দেখতে পাও। …ছিদ্রান্বেষণ? না, তা হবে কেন?</p>
+                      <h3>{{ $curriculum->four_en}}</h3>
+                      <p>{{ $curriculum->four_desc}}</p>
                     </div>
                   </div>
                 </div>
@@ -331,8 +336,8 @@
                 <div class="section-content content05">
                   <div class="row">
                     <div class="col-md-12 col-sm-12 col-12">
-                      <h3>লাইফলং লার্নিং</h3>
-                      <p>অর্থহীন লেখা যার মাঝে আছে অনেক কিছু। হ্যাঁ, এই লেখার মাঝেই আছে অনেক কিছু। যদি তুমি মনে করো, এটা তোমার কাজে লাগবে, তাহলে তা লাগবে কাজে। নিজের ভাষায় লেখা দেখতে অভ্যস্ত হও। মনে রাখবে লেখা অর্থহীন হয়, যখন তুমি তাকে অর্থহীন মনে করো; আর লেখা অর্থবোধকতা তৈরি করে, যখন তুমি তাতে অর্থ ঢালো। যেকোনো লেখাই তোমার কাছে অর্থবোধকতা তৈরি করতে পারে, যদি তুমি সেখানে অর্থদ্যোতনা দেখতে পাও। …ছিদ্রান্বেষণ? না, তা হবে কেন?</p>
+                      <h3>{{ $curriculum->five_en}}</h3>
+                      <p>{{ $curriculum->five_desc}}</p>
                     </div>
                   </div>
                 </div>
@@ -458,11 +463,11 @@
               <div class="item">
                 <div class="row">
                   <div class="col-md-5">
-                    <img src="{{ asset('frontend/assets/coursedetails/img/std-slider.png') }}" class="img-fluid">
+                    <img src="{{ asset('backend/img/mentors/'. $batch->mentor->mentor_profile_picture) }}" class="img-fluid">
                   </div>
                   <div class="col-md-7">
                     <div class="slider-content">
-                      <h2>সাদিয়া জামান ফারাহ</h2>
+                      <h2>{{ $batch->mentor->mentor_fullname }}</h2>
                       <h3>ফুল স্ট্যাক ওয়েব ডেভেলপার</h3>
                       <h3>ফাইভার <span>লেভেল ২ সেলার</span></h3>
 
@@ -478,11 +483,11 @@
               <div class="item">
                 <div class="row">
                   <div class="col-md-5">
-                    <img src="{{ asset('frontend/assets/coursedetails/img/std-slider.png') }}" class="img-fluid">
+                    <img src="{{ asset('backend/img/mentors/'. $batch->mentor->mentor_profile_picture) }}" class="img-fluid">
                   </div>
                   <div class="col-md-7">
                     <div class="slider-content">
-                      <h2>সাদিয়া জামান ফারাহ</h2>
+                      <h2>{{ $batch->mentor->mentor_fullname }}</h2>
                       <h3>ফুল স্ট্যাক ওয়েব ডেভেলপার</h3>
                       <h3>ফাইভার <span>লেভেল ২ সেলার</span></h3>
 
@@ -498,11 +503,11 @@
               <div class="item">
                 <div class="row">
                   <div class="col-md-5">
-                    <img src="{{ asset('frontend/assets/coursedetails/img/std-slider.png') }}" class="img-fluid">
+                    <img src="{{ asset('backend/img/mentors/'. $batch->mentor->mentor_profile_picture) }}" class="img-fluid">
                   </div>
                   <div class="col-md-7">
                     <div class="slider-content">
-                      <h2>সাদিয়া জামান ফারাহ</h2>
+                      <h2>{{ $batch->mentor->mentor_fullname }}</h2>
                       <h3>ফুল স্ট্যাক ওয়েব ডেভেলপার</h3>
                       <h3>ফাইভার <span>লেভেল ২ সেলার</span></h3>
 
@@ -669,14 +674,14 @@
 
             <div class="ln-course-mentor-info">
               <!-- Mentor Image -->
-              <img src="{{ asset('frontend/assets/coursedetails/img/mentor.png') }}" class="img-fluid">
+              <img src="{{ asset('backend/img/mentors/'. $batch->mentor->mentor_profile_picture) }}" class="img-fluid">
               
               <!-- Course Mentor Content Start -->
               <div class="ln-course-mentor-content">
                 <div class="row">
                   <div class="col-md-8">
-                    <h2>সাদিয়া জামান ফারাহ</h2>
-                    <h4>মেন্টর - ফুল স্ট্যাক ওয়েব ডেভেলপমেন্ট </h4>
+                    <h2>{{ $batch->mentor->mentor_fullname }}</h2>
+                    <h4>{{ $batch->mentor->mentor_designation }} </h4>
                     <h4>প্রশিক্ষণ দিয়েছেন :  <span>২০০০ শিক্ষার্থী</span></h4>
                   </div>
 

@@ -13,6 +13,7 @@
 
                          
                             <ul class="navbar-nav">
+
                                  
 
                                 <li class="nav-item active">
@@ -58,10 +59,34 @@
                         </div>
 
                         <div class="ml-auto ml-auto-mobile top-bar">
-                                 <a href="{{ route('login') }}" class="login-btn"><i cass="icofont-login"></i> Signin</a>
-                                    <a href="{{ route('register') }}" class="login-btn  mobile-hide"><i class="icofont-business-man-alt-1"></i> Signup</a>
-                                                                                        
+                            <!-- check whethere user login or not start -->
+                            @if( Auth::check())
+                               <div class="dropdown">
+                                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                                    {{ Auth::user()->name }}
+                                  </button>
+                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
 
+                                    <!-- logout user start -->
+                                    <form method="POST" action="{{ route('logout') }}">
+                                     @csrf
+                                          <a class="dropdown-item" href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>
+                                    </form>
+                                    <!-- logout user end  -->
+                                    
+                                  </div>
+                                </div>
+                            @else
+                                 <a href="{{ route('login') }}" class="login-btn"><i cass="icofont-login"></i> Signin</a>
+                                <a href="{{ route('register') }}" class="login-btn  mobile-hide"><i class="icofont-business-man-alt-1"></i> Signup</a>
+                            @endif
+                            <!-- check whethere user login or not end -->
+
+                            
+                                                                                        
+                            
                         </div>
                     </div>
                 </nav>

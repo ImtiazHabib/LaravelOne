@@ -22,7 +22,9 @@
     <link rel="stylesheet" type="text/css" href="https://shikhbeshobai.com/public/frontend/assets/vendor/css/stylesheet.css"/>
     
     <!--Template Stylesheets css-->
-    <link rel="stylesheet" href="https://shikhbeshobai.com/public/frontend/assets/css/style.css">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/mystyle.css') }}">
+
     <link rel="stylesheet" href="https://shikhbeshobai.com/public/frontend/assets/css/responsive.css">
     <!-- Fonts styles -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,600i,700,700i" rel="stylesheet">   

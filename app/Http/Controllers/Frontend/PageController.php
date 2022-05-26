@@ -53,58 +53,41 @@ class PageController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Show the frontend login page.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function frontend_login()
+    { 
+        
+        return view('frontend.pages.frontend_auth.login');
+        
     }
 
-    /**
-     * Display the specified resource.
+     /**
+     * Show the frontend Register page.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function frontend_register()
+    { 
+        
+        return view('frontend.pages.frontend_auth.register');
+        
     }
 
-    /**
-     * Show the form for editing the specified resource.
+     /**
+     * Show the frontend dashboard page.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function frontend_dashboard()
+    { 
+        
+        
+        return view('frontend.pages.frontend_auth.dashboard');
+        
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+   
 }

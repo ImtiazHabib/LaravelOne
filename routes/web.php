@@ -32,6 +32,11 @@ Route::get('/','App\Http\Controllers\Frontend\PageController@index')->name('home
 Route::get('/coursepage','App\Http\Controllers\Frontend\PageController@coursepage')->name('coursepage');
 Route::get('/coursedetails/{batch_slug}','App\Http\Controllers\Frontend\PageController@coursedetails')->name('coursedetails');
 
+// Frontend Auth Routes
+Route::get('/frontend_login','App\Http\Controllers\Frontend\PageController@frontend_login')->name('frontend_login');
+Route::get('/frontend_register','App\Http\Controllers\Frontend\PageController@frontend_register')->name('frontend_register');
+Route::get('/frontend_dashboard','App\Http\Controllers\Frontend\PageController@frontend_dashboard')->name('frontend_dashboard');
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');

@@ -66,8 +66,7 @@
                                     {{ Auth::user()->name }}
                                   </button>
                                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="{{ route('frontend_dashboard') }}">Dashbord</a>
 
                                     <!-- logout user start -->
                                     <form method="POST" action="{{ route('logout') }}">
@@ -79,8 +78,8 @@
                                   </div>
                                 </div>
                             @else
-                                 <a href="{{ route('login') }}" class="login-btn"><i cass="icofont-login"></i> Signin</a>
-                                <a href="{{ route('register') }}" class="login-btn  mobile-hide"><i class="icofont-business-man-alt-1"></i> Signup</a>
+                                 <a href="{{ route('frontend_login') }}" class="login-btn"><i cass="icofont-login"></i> Signin</a>
+                                <a href="{{ route('frontend_register') }}" class="login-btn  mobile-hide"><i class="icofont-business-man-alt-1"></i> Signup</a>
                             @endif
                             <!-- check whethere user login or not end -->
 

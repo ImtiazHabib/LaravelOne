@@ -4,14 +4,14 @@
     <head>
 
         <!-- metas.blade.php -->
-        @include('frontend.includes.metas');
+        @include('frontend.includes.metas')
    
     <!-- topscript.blade.php -->
-        @include('frontend.includes.topscript');
+        @include('frontend.includes.topscript')
 
 
     <!-- css.blade.php -->
-        @include('frontend.includes.css');
+        @include('frontend.includes.css')
 
 
     </head>
@@ -23,13 +23,13 @@
             <!--Footer-->
             
         <!-- footer.blade.php -->
-        @include('frontend.includes.footer');
+        @include('frontend.includes.footer')
 
                    </div> 
         </div>
 
         <!-- script.blade.php -->
-        @include('frontend.includes.script');
+        @include('frontend.includes.script')
 
        </body>
 </html>

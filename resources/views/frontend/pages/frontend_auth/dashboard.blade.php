@@ -28,8 +28,14 @@
 							<div class="profile-tab-nav border-right">
 								<div class="p-4">
 									<div class="img-circle text-center mb-3">
-										 <img src="https://shikhbeshobai.com/public/frontend/assets/images/avater.png" alt="Profile Picture" class="shadow">
-				                        							
+										<!-- user profile picture read from database -- start -->
+                                        @if(!empty(Auth::user()->image))
+	                                        <img src="{{ asset('frontend/assets/images/student_profile') }}/{{ Auth::user()->image }}" alt="Profile Picture" class="shadow" width="400" >
+                                        @else
+	                                         <img src="{{ asset('frontend/assets/images/student_profile/default.png') }}" alt="Profile Picture" class="shadow" width="400">
+
+                                        @endif
+										<!-- user profile picture read from database -- end -->	
 									</div>
 									<h4 class="text-center">{{ Auth::user()->name }} </h4>
 								</div>
@@ -76,64 +82,48 @@
 								<!-- Profile Information -->
 								<div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
 									<h3>Your Profile</h3>
-										<div class="row">
-												<div class="col-md-6">
-													<form action="https://shikhbeshobai.com/student/profile/update" method="POST" enctype="multipart/form-data">
-														<input type="hidden" name="_token" value="2MDaxErbQ90247RZcNYaKTJ5pbzZaznCIsDWbg7W">										<div class="form-group">
-													  	<label>Full Name</label>
-													  	<input type="text" class="form-control" value="Imtiaz Habib" required="required" name="name">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-													  	<label>Email Address</label>
-													  	<input type="text" class="form-control" value="imtiazhabib7@gmail.com" required="required" readonly>
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-													  	<label>Phone</label>
-													  	<input type="text" class="form-control"  value="01681651501" required="required" name="phone">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-													  	<label>Address</label>
-													  	<input type="text" class="form-control"  placeholder="Your Address"  value="" required="required" name="address">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-													  	<label>City</label>
-													  	<input type="text" class="form-control"  placeholder="Your City"  value="" required="required" name="city">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-													  	<label>Country</label>
-													  	<input type="text" class="form-control"  placeholder="Your Country"  value="" required="required" name="country">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-													  	<label>Zip Code</label>
-														<input type="text" class="form-control"  placeholder="Your Area Zip Code"  value="" required="required" name="zipcode">
-													</div>
-												</div>
+										
+										<!-- update student profile from start -->
+                                         <form action="{{ route('student_dashboard.update', Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
+						                  @csrf
 
-												<div class="col-md-6">
-													 <label>Profile Image</label>
-													 <input type="file" name="image" class="form-control-file">
-												</div>
-											
-											
-										</div>
+						                  <div class="form-row">
+						                    <div class="form-group col-md-6">
+						                      <label >Fullname</label>
+						                      <input type="text" class="form-control"  placeholder="Mentor Fullname" name="name" value="{{ Auth::user()->name }}">
+						                    </div>
+						                    <div class="form-group col-md-6">
+						                      <label >Phone</label>
+						                      <input type="text" class="form-control"  placeholder="Mentor Phone" name="phone" value="{{ Auth::user()->phone }}">
+						                    </div>
+						                    <div class="form-group col-md-6">
+						                      <label > Address</label>
+						                      <input type="text" class="form-control" placeholder="Mentor Address" name="address" value="{{ Auth::user()->address }}">
+						                    </div>
+						                    <div class="form-group col-md-6">
+						                      <label >Email</label>
+						                      <input type="email" class="form-control"  placeholder="Mentor Email" name="email" value="{{ Auth::user()->email }}" disabled="true">
+						                    </div>
+						                  </div>
+						                  <div class="form-group">
+						                    <label >Profile Picture</label>
+						                    <br>
+						                       <!-- user profile picture read from database -- start -->
+		                                        @if(!empty(Auth::user()->image))
+			                                        <img src="{{ asset('frontend/assets/images/student_profile') }}/{{ Auth::user()->image }}" alt="Profile Picture" class="shadow" width="40" >
+		                                        @else
+			                                         <img src="{{ asset('frontend/assets/images/student_profile/default.png') }}" alt="Profile Picture" class="shadow" width="40">
 
-										<div>
-											<input type="hidden" name="stdID" value="893">
-											<button type="submit" class="btn std-btn">Update</button>
-										</div>
-									</form>
+		                                        @endif
+												<!-- user profile picture read from database -- end -->	
+						                    <br>
+						                    <input type="file" class="form-control-file"  placeholder=" Profile Picture" name="image" >
+						                  </div>
+						                  <button type="submit" class="btn btn-primary" name="edit student">Update </button>
+						              </form> 
+
+										<!-- update student profile from end -->
+
 								</div>
 
 

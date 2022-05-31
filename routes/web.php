@@ -37,6 +37,9 @@ Route::get('/frontend_login','App\Http\Controllers\Frontend\PageController@front
 Route::get('/frontend_register','App\Http\Controllers\Frontend\PageController@frontend_register')->name('frontend_register');
 Route::get('/frontend_dashboard','App\Http\Controllers\Frontend\PageController@frontend_dashboard')->name('frontend_dashboard');
 
+// student dashboard Controller routes
+Route::post('/student_dashboard/{id}','App\Http\Controllers\Frontend\StudentDashboardController@student_dashboard_update')->name('student_dashboard.update');
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');

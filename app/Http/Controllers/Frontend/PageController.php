@@ -44,7 +44,7 @@ class PageController extends Controller
      */
     public function coursedetails($batch_slug)
     { 
-         $batch = Batch::orderby('id','asc')->where('batch_slug',$batch_slug)->first();
+         $batch = Batch::orderby('batch_slug','asc')->where('batch_slug',$batch_slug)->first();
          $course = Course::orderby('id','asc')->where('id',$batch->batch_course_id)->first();
          $curriculum = CourseCurriculum::orderby('id','asc')->where('course_id',$course->id)->first();
          
@@ -83,7 +83,8 @@ class PageController extends Controller
      */
     public function frontend_dashboard()
     { 
-        
+        // sending user,batch,course data
+
         
         return view('frontend.pages.frontend_auth.dashboard');
         

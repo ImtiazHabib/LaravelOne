@@ -1,87 +1,160 @@
-@extends('frontend.template.template');
+@extends('frontend.template.template')
 
 @section('body')
-
-      
- <!-- Page Preloader -->
-    <div id="loading-page">
-        <div id="loading-center-page">
-            <div id="loading-center-absolute">
-                <div class="loader"></div>
-            </div>
-        </div>
-    </div>
-    <!-- Page Preloader --> 
 
     <!-- Content Page -->
     <div class="warpper clearfix">
 
         <div class="warpper-inner">
-
+            
             <!-- Header -->
             <!-- header.blade.php -->
-            @include('frontend.includes.header');
+            @include('frontend.includes.header')
             <!--Header-->
 
+            <section class="login-page web-login">
 
-            <h1>this is checkout  page</h1>
+                <div class="row row-0">
 
-            <!-- Admission Modal -->
-    <!-- <div class="modal fade" id="admission" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <div class="modal-logo text-center">
-              <img src="{{ asset('frontend/assets/coursedetails/img/logo.png') }}">
-            </div>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form action="" method="">
+                    <div class="col-md-12">
 
-              <div class="form-group">
-                <label class="modal-label">Full Name</label>
-                <input type="text" name="name" class="form-control" required="required" autocomplete="off" placeholder="Required">
-              </div>
+                        <div class="login-form">
 
-              <div class="form-group">
-                <label class="modal-label">Email Address</label>
-                <input type="email" name="email" class="form-control" required="required" autocomplete="off" placeholder="Required"> 
-              </div>
+                            <a class="navbar-brand" href="#">
+                                <span>Checkout Page , Imtiaz habib(Lavael v8.0)</span>
+                            </a>
 
-              <div class="form-group">
-                <label class="modal-label">Contact No</label>
-                <input type="text" name="phone" class="form-control" required="required" autocomplete="off" placeholder="Required"> 
-              </div>
+                            <!-- Checkout from start -------------------- -->
+                                <form method="POST" action="{{ route('register') }}">
+                                    @csrf
 
-              <div class="form-group">
-                <label class="modal-label">Gender</label>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                  <label class="form-check-label" for="inlineCheckbox1">Male</label>
+                                      <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                          <label >Student Name</label>
+                                          <!-- check where anyone login or not  -->
+                                          <input type="text" class="form-control"
+                                          value ="@if (Auth::check()) {{ Auth::user()->name }} @else {{ old('name') }} @endif" >
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                          <label >Student Phone Number</label>
+                                          <input type="text" class="form-control" value ="@if (Auth::check()) {{ Auth::user()->phone }} @else{{ old('name') }} @endif"  >
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label >Student Address</label>
+                                        <input type="text" class="form-control" value ="@if (Auth::check()) {{ Auth::user()->address }} @else {{ old('name') }} @endif"  >
+                                      </div>
+                                      <div class="form-group">
+                                        <label >Course Name</label>
+                                        <input type="text" class="form-control" value="{{ $course->course_english_title }}" >
+                                      </div>
+                                       <div class="form-group">
+                                        <label >Batch Name</label>
+                                        <input type="text" class="form-control" value="{{ $batch->batch_name }}" >
+                                      </div>
+                                      <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                          <label >Mentor Name</label>
+                                          <input type="text" class="form-control" value="{{ $mentor->mentor_fullname }}"  >
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                          <label for="inputCity">Branch Name</label>
+                                          <input type="text" class="form-control" value="{{ $batch->branch->name }}" >
+                                        </div>
+                                      </div>
+                                      <button type="submit" class="btn btn-primary">Confirm Infromation</button>
+                                </form>
+                             
+                              
+                            <!-- Checkout  from end ------------------------- -->
+                        </div>
+
+                    </div>
+
+                    
+
                 </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                  <label class="form-check-label" for="inlineCheckbox2">Female</label>
+
+            </section>
+
+            <section class="login-page mobile-login">
+
+                <div class="row row-0">
+
+                    <div class="col-12 col-lg-5 col-md-5 ipad-login">
+
+                        <div class="topbar-login">
+
+                            <div class="float-right">
+
+                                <ul>
+
+                                    <li>Don't have an account yet?</li>
+
+                                    <li> <a href="#" class="btn btn-border">Sign up</a></li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                        <div class="bg-signup"></div>
+
+                    </div>
+
+                    <div class="col-12 col-lg-7 col-md-7">
+
+                        <div class="login-form">
+
+                            <a class="navbar-brand" href="#">
+                                <span>TeamBoard</span>
+                            </a>
+                            <form action="action.php" method="post">
+
+                                <div class="form-group">
+
+                                    <input type="email" name="a" class="form-control" placeholder="Email Address">
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <input type="password" name="b" class="form-control" placeholder="Password">
+
+                                </div>
+
+                                <div class="form-group clearfix">
+
+                                    <div class="float-left">
+
+                                        <div class="form-check ">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="float-right">
+                                        <a href="#">Forgot password ?</a>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <button type="submit" class="btn btn-blue">Login</button>
+
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
                 </div>
-              </div>
-
-              <div class="form-group">
-                <label class="modal-label">Address</label>
-                <textarea class="form-control" name="address" required="required" placeholder="Required"></textarea>
-              </div>
-
-              <div class="form-group">
-                <input type="submit" name="getAdmission" class="btn-send" value="Get Admission"> 
-              </div>
-
-            </form>
-          </div>
+            </section>
         </div>
-      </div>
-    </div> -->
-
+    </div>
 
 @endsection

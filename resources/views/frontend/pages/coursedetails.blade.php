@@ -121,7 +121,7 @@
             <div class="ln-banner-btn">
               <ul>
                 <li>
-                  <a href="" class="btn-banner-one" data-toggle="modal" data-target="#admission">ভর্তি হোন</a>
+                  <a href="" class="btn-banner-one" href="{{ route('frontend.checkout', $batch->batch_slug) }}">ভর্তি হোন</a>
                 </li>
                 <li>
                   <a href="" class="btn-banner-two"><i class="fa fa-download"></i> সিলেবাস</a>

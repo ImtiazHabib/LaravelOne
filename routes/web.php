@@ -31,6 +31,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','App\Http\Controllers\Frontend\PageController@index')->name('homepage');
 Route::get('/coursepage','App\Http\Controllers\Frontend\PageController@coursepage')->name('coursepage');
 Route::get('/coursedetails/{batch_slug}','App\Http\Controllers\Frontend\PageController@coursedetails')->name('coursedetails');
+Route::get('/frontend_checkout/{batch_slug}','App\Http\Controllers\Frontend\PageController@frontend_checkout')->name('frontend.checkout');
 
 // Frontend Auth Routes
 Route::get('/frontend_login','App\Http\Controllers\Frontend\PageController@frontend_login')->name('frontend_login');

@@ -83,10 +83,29 @@ class PageController extends Controller
      */
     public function frontend_dashboard()
     { 
-        // sending user,batch,course data
+        
 
         
         return view('frontend.pages.frontend_auth.dashboard');
+        
+    }
+
+     /**
+     * frontend Checkout page Controller.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function frontend_checkout($batch_slug)
+    { 
+        // read bacth information fromt he slug
+        $batch = Batch::orderby('batch_slug','asc')->where('batch_slug',$batch_slug)->first();
+        // read course information from the course id of the batch
+        $course = Course::orderby('id','asc')->where('id',$batch->batch_course_id)->first();
+        // read mentor information from the mentor id of the batch
+        $mentor = Mentor::orderby('id','asc')->where('id',$batch->batch_mentor_id)->first();
+        
+        // send all information to the checkout page through comapct
+        return view('frontend.pages.checkout',compact('batch','course','mentor'));
         
     }
 

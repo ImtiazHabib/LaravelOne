@@ -25,52 +25,61 @@
                             </a>
 
                             <!-- Checkout from start -------------------- -->
-                                <form method="POST" action="{{ route('register') }}">
+                                <form action="{{ url('/pay') }}" method="POST" class="needs-validation">
+                                  <input type="hidden" value="{{ csrf_token() }}" name="_token" />
                                     @csrf
 
                                       <div class="form-row">
                                         <div class="form-group col-md-6">
                                           <label >Student Name</label>
                                           <!-- check where anyone login or not  -->
-                                          <input type="text" class="form-control"
+                                          <input type="text" name="customer_name" class="form-control"
                                           value ="@if (Auth::check()) {{ Auth::user()->name }} @else {{ old('name') }} @endif" >
                                         </div>
                                         <div class="form-group col-md-6">
                                           <label >Student Phone Number</label>
-                                          <input type="text" class="form-control" value ="@if (Auth::check()) {{ Auth::user()->phone }} @else{{ old('name') }} @endif"  >
+                                          <input type="text" name="customer_phone" class="form-control" value ="@if (Auth::check()) {{ Auth::user()->phone }} @else{{ old('name') }} @endif"  >
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                          <label >Student Emailr</label>
+                                          <input type="text" name="customer_email" class="form-control" value ="@if (Auth::check()) {{ Auth::user()->email }} @else{{ old('name') }} @endif"  >
                                         </div>
                                       </div>
                                       <div class="form-group">
                                         <label >Student Address</label>
-                                        <input type="text" class="form-control" value ="@if (Auth::check()) {{ Auth::user()->address }} @else {{ old('name') }} @endif"  >
+                                        <input type="text" name="customer_address" class="form-control" value ="@if (Auth::check()) {{ Auth::user()->address }} @else {{ old('name') }} @endif"  >
+                                      </div>
+                                      <div class="form-group">
+                                        <label >Total Ammount</label>
+                                        <input type="text" name="customer_total_ammount" class="form-control" value ="{{ $course->course_price }}"  >
                                       </div>
                                       <div class="form-group">
                                         <label >Course Name</label>
-                                        <input type="text" class="form-control" value="{{ $course->course_english_title }}" >
+                                        <input type="text" name="customer_course_name" class="form-control" value="{{ $course->course_english_title }}" >
                                       </div>
                                        <div class="form-group">
                                         <label >Batch Name</label>
-                                        <input type="text" class="form-control" value="{{ $batch->batch_name }}" >
+                                        <input type="text" name="customer_batch_name" name="customer_batch_name" class="form-control" value="{{ $batch->batch_name }}" >
                                       </div>
                                       <div class="form-row">
                                         <div class="form-group col-md-6">
                                           <label >Mentor Name</label>
-                                          <input type="text" class="form-control" value="{{ $mentor->mentor_fullname }}"  >
+                                          <input type="text" name="customer_mentor_name"  class="form-control" value="{{ $mentor->mentor_fullname }}"  >
                                         </div>
                                         <div class="form-group col-md-6">
                                           <label for="inputCity">Branch Name</label>
-                                          <input type="text" class="form-control" value="{{ $batch->branch->name }}" >
+                                          <input type="text" name="customer_branch_name" class="form-control" value="{{ $batch->branch->name }}" >
                                         </div>
                                       </div>
-                                      <button type="submit" class="btn btn-primary">Confirm Infromation</button>
+                                      <button type="submit" class="btn btn-primary">Pay Course</button>
 
                                       <!-- payment button from sslcommerz start -->
-                                      <button class="your-button-class" id="sslczPayBtn"
+                                      <!-- <button class="your-button-class" id="sslczPayBtn"
                                                 token="if you have any token validation"
                                                 postdata="your javascript arrays or objects which requires in backend"
                                                 order="If you already have the transaction generated for current order"
                                                 endpoint="/pay-via-ajax"> Pay Now
-                                      </button>
+                                      </button> -->
                                       <!-- payment button from sslcommerz start -->
                                       
                                 </form>

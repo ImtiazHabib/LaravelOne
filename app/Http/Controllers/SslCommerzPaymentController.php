@@ -175,12 +175,22 @@ class SslCommerzPaymentController extends Controller
         $amount = $request->input('amount');
         $currency = $request->input('currency');
 
+        // my define code
+        $course_name = $request->input('course_name');
+        $batch_name = $request->input('batch_name');
+        $branch_name = $request->input('branch_name');
+
+
+
         $sslc = new SslCommerzNotification();
 
         #Check order status in order tabel against the transaction id or order id.
         $order_detials = DB::table('orders')
             ->where('transaction_id', $tran_id)
-            ->select('transaction_id', 'status', 'currency', 'amount')->first();
+            ->select('transaction_id', 'status', 'currency', 'amount','course_name','batch_name','branch_name')->first();
+
+            // after successfully complete transaction
+            return view('frontend.pages.success_payment',compact('order_detials'));
 
         if ($order_detials->status == 'Pending') {
             $validation = $sslc->orderValidate($request->all(), $tran_id, $amount, $currency);
@@ -194,7 +204,9 @@ class SslCommerzPaymentController extends Controller
                 $update_product = DB::table('orders')
                     ->where('transaction_id', $tran_id)
                     ->update(['status' => 'Processing']);
-
+                
+                // after successfully complete transaction
+                    return view('frontend.pages.success_payment',compact('order_detials'));
                 echo "<br >Transaction is successfully Completed";
             } else {
                 /*

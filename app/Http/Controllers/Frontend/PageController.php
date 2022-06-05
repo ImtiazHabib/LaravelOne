@@ -9,9 +9,11 @@ use App\Models\Backend\Branch;
 use App\Models\Backend\Course;
 use App\Models\Backend\Mentor;
 use App\Models\Backend\CourseCurriculum;
+use App\Mail\ContactEmail;
 use Illuminate\Support\Str;
 use File;
 use Image;
+use Mail;
 
 class PageController extends Controller
 {
@@ -118,6 +120,27 @@ class PageController extends Controller
     { 
         
         return view('frontend.pages.contact_us');
+        
+    }
+
+    /**
+     * Receive Conact Us data here and send to mail controller.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function contact_us_data(Request $request)
+    {   
+        // read request data into variable
+        $emaildata = [
+          'name'=> $request->name,
+          'email'=> $request->email,
+          'subject'=> $request->subject,
+          'message'=> $request->message,
+        ];
+        
+        Mail::to('imtiazhabib7@gmail.com')->send(new ContactEmail($emaildata));
+
+        return back()->with('success_message','Thank you for mailing to imtiaz habib');
         
     }
 

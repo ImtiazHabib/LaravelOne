@@ -34,6 +34,7 @@ Route::get('/coursepage','App\Http\Controllers\Frontend\PageController@coursepag
 Route::get('/coursedetails/{batch_slug}','App\Http\Controllers\Frontend\PageController@coursedetails')->name('coursedetails');
 Route::get('/frontend_checkout/{batch_slug}','App\Http\Controllers\Frontend\PageController@frontend_checkout')->name('frontend.checkout');
 Route::get('/contact_us','App\Http\Controllers\Frontend\PageController@contact_us')->name('frontend.contact_us');
+Route::post('/contact_us_data','App\Http\Controllers\Frontend\PageController@contact_us_data')->name('frontend.contact_us_data');
 
 // Frontend Auth Routes
 Route::get('/frontend_login','App\Http\Controllers\Frontend\PageController@frontend_login')->name('frontend_login');

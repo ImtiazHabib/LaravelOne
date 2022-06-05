@@ -33,6 +33,7 @@ Route::get('/','App\Http\Controllers\Frontend\PageController@index')->name('home
 Route::get('/coursepage','App\Http\Controllers\Frontend\PageController@coursepage')->name('coursepage');
 Route::get('/coursedetails/{batch_slug}','App\Http\Controllers\Frontend\PageController@coursedetails')->name('coursedetails');
 Route::get('/frontend_checkout/{batch_slug}','App\Http\Controllers\Frontend\PageController@frontend_checkout')->name('frontend.checkout');
+Route::get('/contact_us','App\Http\Controllers\Frontend\PageController@contact_us')->name('frontend.contact_us');
 
 // Frontend Auth Routes
 Route::get('/frontend_login','App\Http\Controllers\Frontend\PageController@frontend_login')->name('frontend_login');

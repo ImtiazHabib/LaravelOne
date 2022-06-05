@@ -40,7 +40,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a data-scroll="" class="nav-link section-scroll" href="https://shikhbeshobai.com/ss-junior">SS Junior</a>
+                                    <a data-scroll="" class="nav-link section-scroll" href="{{ route('frontend.contact_us') }}">Contact Us</a>
                                 </li>
                                 <!-- <li class="nav-item">
                                     <a data-scroll="" class="nav-link section-scroll" href="https://shikhbeshobai.com/contact">Contact</a>

@@ -109,5 +109,17 @@ class PageController extends Controller
         
     }
 
+    /**
+     * Show the frontend Contact Us Page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function contact_us()
+    { 
+        
+        return view('frontend.pages.contact_us');
+        
+    }
+
    
 }

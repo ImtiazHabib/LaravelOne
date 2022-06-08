@@ -85,7 +85,7 @@ Route::get('/blank', function () {
 
 Route::group(['prefix'=>'/admin'],function(){
    
-    Route::get('/dashboard','App\Http\Controllers\Backend\DashboardController@dashboard')->middleware(['auth','verified'])->name('dashboard');
+    Route::get('/dashboard','App\Http\Controllers\Backend\DashboardController@dashboard')->middleware(['auth','verified','role'])->name('dashboard');
 
     // ALL BRANCHES 
     Route::group(['prefix'=>'/branches'],function(){

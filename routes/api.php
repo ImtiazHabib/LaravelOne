@@ -17,3 +17,26 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// ---------------- Course ----------------- CRUD apis start
+
+// get all course informations
+Route::get('/allcourse','App\Http\Controllers\Api\ApiController@allcourse');
+
+// create new course -- for now only three items
+Route::post('/create_course','App\Http\Controllers\Api\ApiController@create_course');
+
+// edit specific course 
+Route::put('/edit_course','App\Http\Controllers\Api\ApiController@edit_course');
+
+// delete specific course 
+Route::delete('/delete_course/{id}','App\Http\Controllers\Api\ApiController@delete_course');
+
+
+
+
+
+// ---------------- Course ----------------- CRUD apis end
+
+
+
